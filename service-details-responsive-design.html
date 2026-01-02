@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern, Responsive Designs - Hizmet Detayları</title>
+    <style>
+/* iOS 26 Glassmorphism Theme - Service Details Page */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f7 25%, #e8e8ed 50%, #d2d2d7 75%, #a1a1a6 100%);
+    background-size: 400% 400%;
+    
+    animation: gradientShift 20s ease infinite;
+    min-height: 100vh;
+    padding: 0;
+    overflow-x: hidden;
+    color: #3D2817;
+    line-height: 1.6;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(200, 200, 205, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(180, 180, 185, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(220, 220, 225, 0.3) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(20px);
+    -webkit-filter: blur(20px);
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.service-details-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header Styles */
+.service-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    margin-bottom: 30px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 28px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #1d1d1f;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateX(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    color: #007AFF;
+}
+
+.service-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1d1d1f;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero and About Wrapper - Side by Side */
+.hero-about-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 40px;
+}
+
+/* Hero Section */
+.hero-section {
+    margin-bottom: 0;
+}
+
+.hero-image-card {
+    background: transparent;
+    border-radius: 24px;
+    padding: 0;
+    text-align: center;
+    height: 100%;
+    min-height: 400px;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+}
+
+.hero-image-card:hover {
+    transform: translateY(-5px);
+}
+
+.hero-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border-radius: 24px;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    position: relative;
+    z-index: 1;
+    padding: 0;
+    overflow: hidden;
+}
+
+.hero-image-placeholder svg {
+    opacity: 0.9;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 24px;
+    display: block;
+}
+
+/* Content Cards - Glassmorphism iOS 18 Style */
+.content-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 32px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.about-card {
+    margin-bottom: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.about-card .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+.content-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.card-header {
+    padding: 28px 32px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.card-header h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1d1d1f;
+    letter-spacing: -0.3px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 32px;
+}
+
+/* Description */
+.description-text {
+    font-size: 16px;
+    line-height: 1.9;
+    color: #1d1d1f;
+    text-align: left;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Features */
+.feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 28px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateX(6px) translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1d1d1f;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.feature-content h4 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin-bottom: 8px;
+    letter-spacing: -0.2px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feature-content p {
+    font-size: 15px;
+    color: #1d1d1f;
+    line-height: 1.7;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Technologies Grid */
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 20px;
+}
+
+.tech-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tech-badge {
+    display: inline-block;
+    padding: 14px 28px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    color: #1d1d1f;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tech-badge:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #007AFF;
+}
+
+/* Process Steps */
+.process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 32px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.step-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateX(6px) translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 800;
+    color: #1d1d1f;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.step-content h4 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin-bottom: 8px;
+    letter-spacing: -0.2px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.step-content p {
+    font-size: 15px;
+    color: #1d1d1f;
+    line-height: 1.7;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* CTA Button */
+.cta-section {
+    margin: 48px 0 24px;
+    padding: 0;
+}
+
+.cta-button {
+    width: 100%;
+    padding: 24px 40px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    color: #1d1d1f;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    letter-spacing: -0.2px;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #007AFF;
+}
+
+.cta-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px 0 rgba(31, 38, 135, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-details-container {
+        padding: 15px;
+    }
+
+    .hero-about-wrapper {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .hero-section {
+        margin-bottom: 0;
+    }
+
+    .about-card {
+        margin-bottom: 32px;
+    }
+
+    .service-title {
+        font-size: 24px;
+    }
+
+    .header-content {
+        padding: 12px 20px;
+    }
+
+    .hero-image-card {
+        padding: 0;
+        min-height: 300px;
+    }
+
+    .hero-image-placeholder {
+        padding: 0;
+    }
+
+    .card-header {
+        padding: 20px;
+    }
+
+    .card-header h3 {
+        font-size: 20px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .tech-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 12px;
+    }
+
+    .step-number {
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
+    }
+
+    .feature-item,
+    .step-item {
+        padding: 18px;
+    }
+
+    .feature-icon {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content {
+        padding: 10px 16px;
+    }
+
+    .back-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .service-title {
+        font-size: 20px;
+    }
+
+    .hero-image-card {
+        padding: 0;
+        min-height: 250px;
+        border-radius: 24px;
+    }
+
+    .hero-image-placeholder {
+        padding: 0;
+    }
+
+    .card-body {
+        padding: 16px;
+    }
+
+    .content-card {
+        border-radius: 20px;
+    }
+
+    .feature-item,
+    .step-item {
+        padding: 16px;
+        gap: 14px;
+    }
+
+    .feature-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .step-number {
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+    }
+
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tech-badge {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="service-details-container">
+        <!-- Header Section -->
+        <header class="service-header">
+            <div class="header-content">
+                <button class="back-button" onclick="window.location.href='https://yellow-narwhal-657713.hostingersite.com/services/'">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <h1 class="service-title">Modern, Responsive Designs</h1>
+            </div>
+        </header>
+
+        <!-- Hero and About Section - Side by Side -->
+        <div class="hero-about-wrapper">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-image-card">
+                    <div class="hero-image-placeholder">
+                        <img src="https://yellow-narwhal-657713.hostingersite.com/wp-content/uploads/2025/12/Modern-responsive-designs-scaled.jpg" alt="Modern, Responsive Designs" class="hero-image">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Description Card -->
+            <div class="content-card about-card">
+                <div class="card-header">
+                    <h3>Service Overview</h3>
+                </div>
+                <div class="card-body">
+                    <p class="description-text">
+                        I create modern, responsive web designs that adapt seamlessly across all devices and screen sizes. Building mobile-first interfaces with fluid layouts, flexible grids, and media queries. Specializing in creating visually appealing, accessible designs that provide optimal user experiences on smartphones, tablets, and desktops.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Section -->
+        <main class="service-content">
+
+            <!-- Services Card -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h3>Services Offered</h3>
+                </div>
+                <div class="card-body">
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                    <line x1="12" y1="18" x2="12.01" y2="18"/>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Mobile-First Design</h4>
+                                <p>Design and develop with mobile-first approach ensuring optimal performance on smaller screens. Progressive enhancement for larger devices with responsive breakpoints.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                    <path d="M9 9h6v6H9z"/>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Flexible Grid Systems</h4>
+                                <p>Implement flexible layouts using CSS Grid and Flexbox. Adaptive grid systems that reorganize content based on screen size for optimal readability and usability.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"/>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Responsive Components</h4>
+                                <p>Create adaptive UI components that scale and reorganize across devices. Responsive navigation menus, image galleries, cards, and interactive elements.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7"/>
+                                    <rect x="14" y="3" width="7" height="7"/>
+                                    <rect x="14" y="14" width="7" height="7"/>
+                                    <rect x="3" y="14" width="7" height="7"/>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Cross-Device Testing</h4>
+                                <p>Comprehensive testing across multiple devices, browsers, and screen sizes. Ensuring consistent appearance and functionality from mobile to desktop.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                                    <polyline points="17 6 23 6 23 12"/>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Performance Optimization</h4>
+                                <p>Optimize responsive designs for fast loading on all devices. Image optimization, lazy loading, and CSS/JS minification for better performance across networks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technologies Card -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h3>Technologies Used:</h3>
+                </div>
+                <div class="card-body">
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <span class="tech-badge">Figma</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-badge">Adobe XD</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-badge">HTML5 & CSS3</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-badge">Tailwind CSS</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-badge">Bootstrap</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-badge">Flexbox & Grid</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-badge">Responsive Design</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-badge">Mobile-First</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Process Card -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h3>Development Process</h3>
+                </div>
+                <div class="card-body">
+                    <div class="process-steps">
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Requirements Analysis</h4>
+                                <p>I analyze your design requirements, target devices, and user demographics. Discuss breakpoints, layout preferences, and create responsive design documentation.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Design & Prototyping</h4>
+                                <p>I create responsive mockups for mobile, tablet, and desktop views. Design flexible grid systems and adaptive components for your approval before development begins.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Development</h4>
+                                <p>I develop using mobile-first approach with HTML5, CSS3 (Grid/Flexbox), and JavaScript. Implement media queries, responsive images, and adaptive layouts. Version control using Git.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Testing & Optimization</h4>
+                                <p>I perform comprehensive cross-device testing on various screen sizes and browsers. Performance optimization, image compression, and responsive behavior verification across devices.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>Deployment & Support</h4>
+                                <p>I handle deployment with responsive configuration and provide ongoing support. Updates for new device sizes, browser compatibility, and performance enhancements.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="cta-section">
+                <button class="cta-button">
+                    <span>Let's Start Your Project</span>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+// Service Details Page JavaScript
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scroll behavior
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Animate cards on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe all content cards
+    document.querySelectorAll('.content-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+    });
+
+    // CTA button click handler
+    const ctaButton = document.querySelector('.cta-button');
+    if (ctaButton) {
+        ctaButton.addEventListener('click', function(e) {
+            // Add ripple effect
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+            
+            // Add your custom action here
+            console.log('CTA button clicked');
+            // Example: window.location.href = '/contact';
+        });
+    }
+});
+
+// Add ripple effect styles dynamically
+const style = document.createElement('style');
+style.textContent = `
+    .cta-button {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(0);
+        animation: ripple-animation 0.6s ease-out;
+        pointer-events: none;
+    }
+    
+    @keyframes ripple-animation {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+    </script>
+</body>
+</html>
+
